@@ -1,6 +1,6 @@
 package com.bridgelabz.linecomparison;
 
-public class Line {
+public class Line implements Comparable<Line>{
 
 	Point p1, p2;
 
@@ -14,5 +14,18 @@ public class Line {
 		if (!(obj instanceof Line)) return false;
         Line l = (Line) obj;
 		return (p1.equals(l.p1) && p2.equals(l.p2)) || (p1.equals(l.p2) && p2.equals(l.p1));
+	}
+
+	// Calculate the length of the line
+	public double length() {
+		double dx = p2.x - p1.x;
+		double dy = p2.y - p1.y;
+		return Math.sqrt(dx * dx + dy * dy);
+	}
+
+	// Compare two lines based on their length
+	@Override
+	public int compareTo(Line other) {
+		return Double.compare(this.length(), other.length());
 	}
 }
