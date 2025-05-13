@@ -1,7 +1,6 @@
 package com.bridgelabz.linecomparison;
 import java.util.Scanner;
 
-
 class Line implements Comparable<Line>{
 
     Point p1, p2;
@@ -90,18 +89,20 @@ public class LineComparison {
         Point p4 = new Point(scanner.nextDouble(), scanner.nextDouble());
         Line l2 = new Line(p3, p4);
 
-        System.out.println(l1.equals(l2) ? "Lines are equal" : "Lines are not equal");
 
-
-        // Compare lines (UC3)
-        int result = l1.compareTo(l2);
-
-        if (result == 0)
-            System.out.println("Both lines are equal in length.");
-        else if (result < 0)
-            System.out.println("Line 1 is shorter than Line 2.");
-        else
-            System.out.println("Line 1 is longer than Line 2.");
+        // Check equality
+        if (l1.equals(l2)) {
+            System.out.println("Lines are exactly equal.");
+        } else {
+            // Compare lengths
+            int result = l1.compareTo(l2);
+            if (result == 0)
+                System.out.println("Lines are of equal length but not same endpoints.");
+            else if (result > 0)
+                System.out.println("Line 1 is longer than Line 2.");
+            else
+                System.out.println("Line 1 is shorter than Line 2.");
+        }
 
         scanner.close();
     }
