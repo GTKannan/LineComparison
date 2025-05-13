@@ -89,6 +89,7 @@ public class LineComparison {
         Point p4 = new Point(scanner.nextDouble(), scanner.nextDouble());
         Line l2 = new Line(p3, p4);
 
+
         // Check equality
         if (l1.equals(l2)) {
             System.out.println("Lines are exactly equal.");
