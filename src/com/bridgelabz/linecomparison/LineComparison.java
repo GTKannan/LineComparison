@@ -1,7 +1,8 @@
 package com.bridgelabz.linecomparison;
 import java.util.Scanner;
 
-class Line {
+
+class Line implements Comparable<Line>{
 
     Point p1, p2;
 
@@ -16,6 +17,20 @@ class Line {
         Line l = (Line) obj;
         return (p1.equals(l.p1) && p2.equals(l.p2)) || (p1.equals(l.p2) && p2.equals(l.p1));
     }
+
+    // Calculate the length of the line
+    public double length() {
+        double dx = p2.x - p1.x;
+        double dy = p2.y - p1.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    // Compare two lines based on their length
+    @Override
+    public int compareTo(Line other) {
+        return Double.compare(this.length(), other.length());
+    }
+
 }
 
 class Point {
@@ -76,6 +91,18 @@ public class LineComparison {
         Line l2 = new Line(p3, p4);
 
         System.out.println(l1.equals(l2) ? "Lines are equal" : "Lines are not equal");
+
+
+        // Compare lines (UC3)
+        int result = l1.compareTo(l2);
+
+        if (result == 0)
+            System.out.println("Both lines are equal in length.");
+        else if (result < 0)
+            System.out.println("Line 1 is shorter than Line 2.");
+        else
+            System.out.println("Line 1 is longer than Line 2.");
+
         scanner.close();
     }
 }
