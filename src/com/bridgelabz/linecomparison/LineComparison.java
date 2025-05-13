@@ -1,6 +1,7 @@
 package com.bridgelabz.linecomparison;
 import java.util.Scanner;
 
+
 class Line implements Comparable<Line>{
 
     Point p1, p2;
@@ -90,6 +91,7 @@ public class LineComparison {
         Line l2 = new Line(p3, p4);
 
         System.out.println(l1.equals(l2) ? "Lines are equal" : "Lines are not equal");
+
 
         // Compare lines (UC3)
         int result = l1.compareTo(l2);
